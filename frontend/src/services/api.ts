@@ -12,7 +12,7 @@ import type {
   AchievementCollection,
   LeaderboardResponse,
   DashboardData,
-} from '@fitquest/types';
+} from '../types';
 
 const BASE_URL = '/api/v1';
 

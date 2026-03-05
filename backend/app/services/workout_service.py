@@ -4,7 +4,7 @@ from sqlalchemy import select, func, and_
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.core.exceptions import NotFoundException
+from app.auth.exceptions import NotFoundException
 from app.models.user_models import User
 from app.models.workout_models import Workout, Exercise, WorkoutType
 from app.schemas.workout_schemas import (

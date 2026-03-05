@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config.database import get_db
-from app.core.dependencies import get_current_user
+from app.auth.dependencies import get_current_user
 from app.models.user_models import User
 from app.models.workout_models import WorkoutType
 from app.schemas.workout_schemas import (

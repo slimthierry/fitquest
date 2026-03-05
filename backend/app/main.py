@@ -6,17 +6,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config.settings import settings
 from app.config.database import engine
 from app.models.base import Base
-from app.api.v1 import auth, workouts, quests, achievements, leaderboard, dashboard
-
-
+from app.loggers import setup_logging
+from app.routes import app_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     yield
     await engine.dispose()
-
-
 app = FastAPI(
     title="FitQuest API",
     description="Gamified fitness tracking with quests, XP, levels and leaderboards",
@@ -38,8 +35,6 @@ app.include_router(quests.router, prefix="/api/v1/quests", tags=["Quests"])
 app.include_router(achievements.router, prefix="/api/v1/achievements", tags=["Achievements"])
 app.include_router(leaderboard.router, prefix="/api/v1/leaderboard", tags=["Leaderboard"])
 app.include_router(dashboard.router, prefix="/api/v1/dashboard", tags=["Dashboard"])
-
-
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "service": "fitquest-api"}

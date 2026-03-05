@@ -4,7 +4,7 @@ from sqlalchemy import select, and_
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.core.exceptions import NotFoundException, BadRequestException
+from app.auth.exceptions import NotFoundException, BadRequestException
 from app.models.user_models import User
 from app.models.quest_models import Quest, UserQuest, QuestStatus
 from app.schemas.quest_schemas import QuestResponse, UserQuestResponse, QuestProgressUpdate

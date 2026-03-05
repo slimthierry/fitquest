@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.exceptions import ConflictException, UnauthorizedException
-from app.core.security import hash_password, verify_password, create_access_token
+from app.auth.exceptions import ConflictException, UnauthorizedException
+from app.auth.security import hash_password, verify_password, create_access_token
 from app.models.user_models import User
 from app.schemas.auth_schemas import RegisterRequest, LoginRequest, AuthResponse
 
